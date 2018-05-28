@@ -70,6 +70,23 @@ public class ManipulateDatabase {
 		      return false;
 		  }
 		  
+		//查询是否可以注册该用户名
+		  public static synchronized boolean checkIfCouldRegister(String username)throws Exception{
+			  Class.forName("com.mysql.jdbc.Driver");
+			  String url = "jdbc:mysql://localhost:3306/androidstorage?useUnicode=true&characterEncoding=utf-8";
+		      Connection conn = DriverManager.getConnection(url, "root", "jiqing");
+		      Statement stat = conn.createStatement();
+		    
+		      int id =0;
+		      ResultSet result = stat.executeQuery("select * from user where username='"+username);
+		      while(result.next()){
+		    	  id++;
+		      }
+		      if(id!=0)
+		    	  return false;
+		      return true;
+		  }
+		  
 		  public static synchronized List<JSONObject> searchDataItem(String sql)throws Exception{
 			  Class.forName("com.mysql.jdbc.Driver");
 			  String url = "jdbc:mysql://localhost:3306/androidstorage?useUnicode=true&characterEncoding=utf-8";
