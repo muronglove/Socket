@@ -96,7 +96,7 @@ public class Service implements Runnable {
       } else if(obj.getString("cmd").equals("register")) {
     	  
        msg = socket.getInetAddress() + " : " + msg;
-       if(ManipulateDatabase.checkIfCouldRegister(obj.getString("username"))){
+       if(!ManipulateDatabase.checkIfCouldRegister(obj.getString("username"))){
     	   returnobj = new JSONObject();
     	   returnobj.put("cmd", "register failed");
     	   ManipulateDatabase.sendmsg(socket,returnobj);

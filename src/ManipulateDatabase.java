@@ -78,7 +78,7 @@ public class ManipulateDatabase {
 		      Statement stat = conn.createStatement();
 		    
 		      int id =0;
-		      ResultSet result = stat.executeQuery("select * from user where username='"+username);
+		      ResultSet result = stat.executeQuery("select * from user where username='"+username+"'");
 		      while(result.next()){
 		    	  id++;
 		      }
