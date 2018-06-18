@@ -168,6 +168,8 @@ public class Service implements Runnable {
    } catch (Exception ex) {
     System.out.println("server 读取数据异常");
     ex.printStackTrace();
+
+
    }
   }
 
